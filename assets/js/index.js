@@ -1,5 +1,4 @@
-
-
+var port = 8000;
 $("#add_user").submit(function(event){
     alert("Data is successfully saved");
 })
@@ -13,14 +12,11 @@ $('#update_user').submit(function(event){
     $.map(unindexed_array, function(n, i){
         data[n['name']] = n['value']
     })
-
-
     var request = {
-        "url" : `http://localhost:${process.env.PORT}/api/users/${data.id}`,
+        "url" : `https://limitless-shore-19901.herokuapp.com/api/users/${data.id}`,
         "method" : "PUT",
         "data" : data
     }
-
     $.ajax(request).done(function(response){
         alert("Data Updated Successfully!");
     })
@@ -33,7 +29,7 @@ if(window.location.pathname == "/"){
         var id = $(this).attr("data-id")
 
         var request = {
-            "url" : `http://localhost:${process.env.PORT}/api/users/${id}`,
+            "url" : `https://limitless-shore-19901.herokuapp.com/api/users/${id}`,
             "method" : "DELETE"
         }
 
